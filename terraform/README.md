@@ -6,6 +6,7 @@ Run As below
 terraform init 
 terraform apply -target=module.project-factory --var-file=terraform.tfvars --auto-approve
 terraform apply --var-file=terraform.tfvars --auto-approve
+terraform output -raw key > ../sa.json
 ```
 
 ## Requirements

@@ -1,3 +1,5 @@
 *.tfvars
 */.terraform*
 *.pkrvars.hcl
+packer/sa.json
+sa.json

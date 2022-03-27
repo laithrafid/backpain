@@ -24,7 +24,12 @@ module "project-factory" {
     "cloudresourcemanager.googleapis.com",
     "cloudbilling.googleapis.com",
     "iam.googleapis.com",
-
+    "storage-api.googleapis.com",
+    "servicemanagement.googleapis.com",
+    "storage-component.googleapis.com",
+    "logging.googleapis.com",
+    "monitoring.googleapis.com",
+    "sourcerepo.googleapis.com"
   ]
   depends_on = [
     google_folder.stg
@@ -45,4 +50,12 @@ module "service-accounts" {
     "${module.project-factory.project_name}=>roles/iam.serviceAccountTokenCreator",
     "${module.project-factory.project_name}=>roles/iap.tunnelResourceAccessor"
   ]
+}
+
+resource "google_storage_bucket" "kali-image" {
+  name          = "kali-image-project-10"
+  location      = var.project_region
+  project       = module.project-factory.project_id
+  storage_class = "REGIONAL"
+  force_destroy = true
 }
