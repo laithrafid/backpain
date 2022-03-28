@@ -1,18 +1,19 @@
 # https://github.com/mitchellh/vagrant-google
 #TODO: variables
 Vagrant.configure("2") do |config|
-
+  config.vm.box_version = "0.1.0"
   config.vm.define "gcp" do |gcp|
     gcp.vm.box = "google/gce" #dummy gcp vagrantbox provided by atlas
     config.vm.provider :google do |google, override|
-      google.google_project_id = "../sa.json" #from terraform
-      google.google_json_key_location = "" #terraform service account key.json
+      google.google_project_id = "kali-6b2bafa317" #from terraform
+      google.google_json_key_location = "../kali.json" #terraform service account key.json
       google.image_family = "kali-rolling"
       google.name = "kali-v1.0"
-      google.disk_size = 500                 
+      google.disk_size = 50           
+      google.zone = "us-east1-c"     
       google.machine_type = "n1-standard-4"
-      override.ssh.username = 'provisioner'
-      override.ssh.private_key_path = 'id_rsa.pub' # your ssh key
+      override.ssh.username = 'vagrant'
+      override.ssh.private_key_path = '~/.ssh/id_rsa.pub' # your ssh key
     end
   end
 

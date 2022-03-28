@@ -1,15 +1,22 @@
-## How to use 
-fill all terraform.tfvars
-then workaround an issue with root module of services_accounts
-Run As below
+## Requirements
+1. install terraform  (Terraform v1.1.7)
+2. install gcloud 
+3. gcloud auth login 
+4. copy terraform.tfvars
+ `cp terraform.tfvars.template terraform.tfvars`
+5. gcloud auth print-access-token
+6. fill all variables terraform.tfvars
+
+## How to Run
+then workaround an issue with root module of services_accounts in this , i'm lazy to put these modules in seprate folders
+
+so Run As below
 ```
 terraform init 
 terraform apply -target=module.project-factory --var-file=terraform.tfvars --auto-approve
 terraform apply --var-file=terraform.tfvars --auto-approve
-terraform output -raw key > ../sa.json
+terraform output -raw key > ../kali.json
 ```
-
-## Requirements
 
 | Name | Version |
 |------|---------|

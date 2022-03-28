@@ -3,3 +3,5 @@
 *.pkrvars.hcl
 packer/sa.json
 sa.json
+kali.json
+vagrant/.vagrant/*

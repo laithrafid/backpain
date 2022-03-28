@@ -27,3 +27,7 @@ output "key" {
   sensitive   = true
   value       = module.service-accounts.key
 }
+output "bucket" {
+  description = "google cloud bucket"
+  value = google_storage_bucket.kali-image
+}
